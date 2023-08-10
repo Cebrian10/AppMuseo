@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <img src="../../assets/img/buho-logo.svg" />
+  <h1>Titi</h1>
+  <ion-icon name="information-circle-outline" (click)="viewInformation()"></ion-icon>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h2>Hola!</h2>
+  <h1>Bienvenido al museo Tecnología en el tiempo</h1>
+  
+  <div class="div-categorias">
+    <ion-segment [scrollable]="true" value="categorias">
+      <ion-segment-button value="todos" (click)="obtenerArticulos()">
+        <ion-button size="small">Todos</ion-button>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let categoria of categorias" value="{{ categoria.id }}" (click)="cargarArticulosPorCategoria(categoria.id)">
+        <ion-button size="small">{{ categoria.nombre }}</ion-button>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div id="body-main">
+    <ion-grid id="body-main-estructura">
+      <ion-row>
+        <ion-col *ngFor="let articulo of articulos" class="articulo" size-md="6" size-lg="6" (click)="viewArticle(articulo)">
+          <div class="nombre"><h2>{{ articulo.nombre }}</h2></div>
+          <div class="miniatura-container" *ngIf="articulo.fotos && articulo.fotos.length > 0">
+            <img class="miniatura" src="{{ getPhotoUrl(articulo) }}"/>
+          </div>
+          <div class="pie">
+            <!--div class="contador-visitas">
+              <ion-icon name="eye"></ion-icon>
+              <p>152</p>
+            </div-->
+            <div class="contador-comentarios">
+              <ion-icon name="chatbubble"></ion-icon>
+              <p>{{ comentariosPorArticulo[articulo.id]?.length }}</p>
+            </div>
+          </div>
+        </ion-col>
+
+            
+      </ion-row>
+    </ion-grid>    
+  </div>
+
+</ion-content>

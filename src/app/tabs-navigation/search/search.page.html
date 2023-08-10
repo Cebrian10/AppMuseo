@@ -1,0 +1,33 @@
+<ion-header>
+  <img src="../../assets/img/buho-logo.svg" />
+  <h1>Titi</h1>
+  <ion-icon name="information-circle-outline" (click)="viewInformation()"></ion-icon>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar placeholder="Nombre de un artículo..." (ionInput)="searchArticle($event)" [(ngModel)]="searchText"></ion-searchbar>
+
+  <ion-label class="resultados">Resultados: {{ searchedArticle.length }}</ion-label>
+
+  <ion-list>
+    <hr class="divider">
+    <ion-item *ngFor="let article of searchedArticle" (click)="viewArticle(article)" [ngClass]="{'selected': isSelected}">
+      <div class="div-img">
+        <img src="{{ getPhotoUrl(article) }}" />
+      </div>
+      <div class="div-info">
+        <h1>{{ article.nombre }}</h1>
+        <p>{{ getLimitedDescription (article.descripcion, 200) }}</p>
+        <div class="div-abajo">
+          <h5>{{ article.categoria }}</h5>       
+          <h4>{{ article.year }}</h4>      
+        </div>
+      </div>
+    </ion-item>
+    <hr class="divider">
+  </ion-list>
+
+  <div *ngIf="searchedArticle.length === 0" class="no-results">
+    No se encontraron resultados.
+  </div>
+</ion-content>

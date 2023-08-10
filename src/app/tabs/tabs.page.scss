@@ -1,0 +1,31 @@
+ion-fab-button {
+  --background: linear-gradient(to bottom, #DAA641, #FFC57C, #FFC34F, #FFBB6B, #E8AF2D, #C6740A);
+}
+
+ion-fab-button ion-icon {
+  font-size: 2rem;
+}
+
+ion-tab-bar {
+  --border: 0;
+}
+
+ion-tab-button {
+  --background: var(--ion-background-color);
+}
+
+ion-icon {
+  font-size: 1.5rem;
+}
+
+.custom-label{
+    font-size: 13px;
+    font-family: 'inter-regular';
+    margin: 0;
+}
+  
+.custom-selected-tab {
+  color: var(--ion-color-blanco);
+  font-weight: bold;
+}
+

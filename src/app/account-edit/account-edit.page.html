@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="div-header" (click)="goToBack()">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+    <ion-label>Editar cuenta</ion-label>
+  </div>
+
+  <form (submit)="submitProfile()">
+
+    <div class="imagen">
+      <img src="{{usuario.foto}}">
+      <div class="overlay">
+        <ion-icon name="add-circle-sharp"></ion-icon>
+        <input type="file" accept=".jpeg,.jpg,.png" (change)="onFileSelected($event)" #fileInput>
+      </div>
+    </div>
+
+    <!-- Nombre -->
+    <div class="div-info">
+      <div class="div-div-info">
+        <ion-label class="lbl">Nombre</ion-label>
+        <!--[readonly]="!editarNombre"-->
+        <ion-input class="p" value="{{ usuario.nombre }}" [(ngModel)]="name" name="name"></ion-input>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Apellido -->
+    <div class="div-info">
+      <div class="div-div-info">
+        <ion-label class="lbl">Apellido</ion-label>
+        <ion-input class="p" value="{{ usuario.apellido }}" [(ngModel)]="lastname" name="lastname"></ion-input>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Año -->
+    <div class="div-info">
+      <div class="div-div-info">
+        <ion-label class="lbl">Año</ion-label>
+        <ion-list>
+          <ion-item class="ion-item-inputs">
+            <ion-select interface="popover" class="a" value="{{ usuario.nivel }}" type="text" placeholder="Año" [(ngModel)]="level" name="level">
+              <ion-select-option>1</ion-select-option>
+              <ion-select-option>2</ion-select-option>
+              <ion-select-option>3</ion-select-option>
+              <ion-select-option>4</ion-select-option>
+              <ion-select-option>5</ion-select-option>  
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Facultad -->
+    <div class="div-info">
+      <div class="div-div-info">
+      <ion-label class="lbl">Facultad</ion-label>
+      <ion-list>
+        <ion-item class="ion-item-inputs">
+          <ion-select interface="popover" class="a" type="text" [(ngModel)]="selectedFacultad" name="selectedFacultad"  (ionChange)="obtenerCarreras(selectedFacultad)">
+            <ion-select-option class="p" *ngFor="let facultad of facultades" [value]="facultad.id">{{ facultad.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>  
+    </div>
+    <hr class="divider">
+
+    <!-- Carrera -->
+    <div class="div-info">
+      <div class="div-div-info">
+        <ion-label class="lbl">Carrera</ion-label>
+        <ion-list>
+          <ion-item class="ion-item-inputs">
+            <ion-select interface="popover" id="carreraSelect" class="ion-valid" type="text" placeholder="Escoja su carrera" [(ngModel)]="selectedCarrera" name="selectedCarrera" [disabled]="false">
+              <ion-select-option class="p" *ngFor="let carrera of carreras" [value]="carrera.id">{{ carrera.nombre }}</ion-select-option>  
+            </ion-select>
+          </ion-item>
+        </ion-list>        
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Boton Actualizar/Guardar cambios -->
+    <ion-button class="button-round" expand="full" type="submit">Actualizar</ion-button>
+  </form>
+
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <swiper-container>
+
+    <swiper-slide *ngFor="let articulo of articulos">
+      <h1>{{ articulo.nombre }}</h1>
+      <h3>{{ articulo.categoria }}</h3>
+      <div class="contenedor-imagen">
+        <img src="{{ getPhotoUrl(articulo) }}" />
+      </div>
+      <h3>{{ articulo.dueno }}</h3>
+      <p>{{ getLimitedDescription (articulo.descripcion, 400) }}</p>
+    
+      <div class="fecha-pagination">
+        <div class="d-start"><h5>{{ (articulos[articulos.indexOf(articulo) - 1] && articulos[articulos.indexOf(articulo) - 1].year) || '' }}</h5></div>
+        <div class="d-center" ><h5>{{ articulo.year }}</h5></div>
+        <div class="d-end"><h5>{{ (articulos[articulos.indexOf(articulo) + 1] && articulos[articulos.indexOf(articulo) + 1].year) || '' }}</h5></div>
+      </div>
+    </swiper-slide>
+
+  </swiper-container>

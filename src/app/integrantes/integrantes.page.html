@@ -1,0 +1,96 @@
+
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="div-information">
+    <ion-icon name="chevron-back-sharp" (click)="regresar()"></ion-icon>
+    <h1>Integrantes</h1>
+  </div>
+  <hr class="divider">
+
+  <div class="scrolling-wrapper">
+    <div class="card">
+      <ion-icon name="phone-portrait-outline"
+        (click)="MostrarGrupo('APP')"></ion-icon>
+      <h3>APP<br><br></h3>
+    </div>
+    <div class="card ">
+      <ion-icon name="server-outline"
+        (click)="MostrarGrupo('BD')"></ion-icon>
+      <h3>BASE<br>DE DATOS</h3>
+    </div>
+    <div class="card ">
+      <ion-icon name="cloud-outline"
+        (click)="MostrarGrupo('API')"></ion-icon>
+      <h3>API<br><br></h3>
+    </div>
+    <div class="card ">
+      <ion-icon name="images-outline"
+        (click)="MostrarGrupo('MULTIMEDIOS')"></ion-icon>
+      <h3>RECURSOS<br>MULTIMEDIOS</h3>
+    </div>
+    <div class="card ">
+      <ion-icon name="earth-outline"
+        (click)="MostrarGrupo('WEB')"></ion-icon>
+      <h3>SITIO<br>WEB</h3>
+    </div>
+    <div class="card">
+      <ion-icon name="pulse-outline"
+        (click)="MostrarGrupo('QA')"></ion-icon>
+      <h3>Q.A.<br><br></h3>
+    </div>
+    <div class="card">
+      <ion-icon name="layers-outline"
+        (click)="MostrarGrupo('CATEGORIA')"></ion-icon>
+      <h3>CATEGORIA<br><br></h3>
+    </div>
+    <div class="card">
+      <ion-icon name="eye-outline"
+        (click)="MostrarGrupo('VISITAS')"></ion-icon>
+      <h3>VISITAS<br><br></h3>
+    </div>
+    <div class="card">
+      <ion-icon name="chatbubbles-outline"
+        (click)="MostrarGrupo('CONVERSATORIO')"></ion-icon>
+      <h3>CONVERSATORIOS<br><br></h3>
+    </div>
+    <div class="card">
+      <ion-icon name="videocam-outline"
+        (click)="MostrarGrupo('VIDEO')"></ion-icon>
+      <h3>VIDEO<br><br></h3>
+    </div>
+    <div class="card">
+      <ion-icon name="extension-puzzle-outline"
+        (click)="MostrarGrupo('INTEGRACION')"></ion-icon>
+      <h3>INTEGRACION<br><br></h3>
+    </div>
+  </div>
+  <!-- Tarjeta con los grupos, líder e integrantes -->
+  <ion-card>
+    <ion-card-header style="padding-inline: 10px;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <ion-card-title>Líder del Equipo <br> {{nombreGrupo}}</ion-card-title>
+        <ion-avatar style="margin-bottom: 10px;">
+          <img src="{{fotoLider}}" alt>
+        </ion-avatar>
+        <h2>{{nombreLider}} {{apellidoLider}}</h2>
+      </div>
+      <hr class="divider">
+      <ion-list>
+        <ion-card-title>Integrantes del Equipo <br> {{nombreGrupo}}</ion-card-title>
+        <ion-item *ngFor="let integrante of selectedGroupMembers">
+          <ion-avatar style="margin-left: 10px;">
+            <img src="{{integrante.foto}}" alt>
+          </ion-avatar>
+          <h2 style="padding-left: 10px;">{{integrante.nombre}}
+            {{integrante.apellido}}</h2>
+        </ion-item>
+      </ion-list>
+      <hr class="divider">
+
+    </ion-card-header>
+
+  </ion-card>
+
+</ion-content>
